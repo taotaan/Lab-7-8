@@ -1,26 +1,29 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 
-const ProductCard = ({ name, price, stock, pic }) => {
+const ProductCard = ({ name, price, stock, pic}) => {
+
   return (
-    <View style={styles.card}>
-      <Image source={{ uri: pic }} style={styles.image} />
-      <View style={styles.details}>
-        <Text style={styles.name}>{name}</Text>
-        <Text style={styles.price}>฿{price}</Text>
-        <Text style={styles.stock}>จำนวนคงเหลือ {stock}</Text>
+    
+      <View style={styles.card}>
+        <Image source={{ uri: pic }} style={styles.image} />
+        <View style={styles.details}>
+          <Text style={styles.name}>{name}</Text>
+          <Text style={styles.stock}>จำนวนคงเหลือ {stock}</Text>
+          <Text style={styles.price}>฿{price}</Text>
+        </View>
       </View>
-    </View>
+
   );
 };
 
 const styles = StyleSheet.create({
   card: {
-    flexDirection: 'column', 
+    flexDirection: 'column',
     padding: 15,
     marginVertical: 5,
     backgroundColor: 'white',
-    alignItems: 'center',  
+    alignItems: 'center',
   },
   image: {
     width: 150,
@@ -29,25 +32,25 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   details: {
-    width: '100%',  
+    width: '100%',
     justifyContent: 'center',
-    alignItems: 'flex-start',  
+    alignItems: 'flex-start',
   },
   name: {
     fontSize: 16,
     fontWeight: 'bold',
-    textAlign: 'left',  
+    textAlign: 'left',
   },
   price: {
     fontSize: 16,
     color: 'red',
-    textAlign: 'left',  
+    textAlign: 'left',
   },
   stock: {
     fontSize: 14,
     color: 'gray',
     fontStyle: 'italic',
-    textAlign: 'left',  
+    textAlign: 'left',
   },
 });
 
