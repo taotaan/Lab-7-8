@@ -13,19 +13,37 @@ import Icon from 'react-native-vector-icons/Ionicons';
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
-function HomeTabNavigator({ Navigator }) { // Renamed Home to HomeTabNavigator
+function HomeTabNavigator() {
   return (
-    <Tab.Navigator tabBarOptions={{ activeTintColor: 'red' }}>
+    <Tab.Navigator 
+      screenOptions={{
+        tabBarActiveTintColor: 'red',
+        tabBarStyle: [{ display: 'flex' }, null] // แนะนำให้ใช้ตัวเลือกการตั้งค่าใหม่ที่นี่
+      }}
+    >
       <Tab.Screen 
-        name="Home" 
-        options={{  headerShown: false,  tabBarIcon: ({ color, size }) => (<Icon name="home" color={color} size={size} />)  }} 
-        component={HomeScreen} // Use HomeScreen here
+        name="Homeja" 
+        component={HomeScreen}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ color, size }) => (<Icon name="home" color={color} size={size} />)
+        }} 
       />
-      <Tab.Screen name="Cart" options={{ headerShown: false,  tabBarIcon: ({ color, size }) => (<Icon name="cart" color={color} size={size} />)  }} 
-        component={Cart} 
+      <Tab.Screen 
+        name="Cart"
+        component={Cart}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ color, size }) => (<Icon name="cart" color={color} size={size} />)
+        }} 
       />
-      <Tab.Screen  name="Profile"  options={{ headerShown: false,  tabBarIcon: ({ color, size }) => (<Icon name="person" color={color} size={size} />) }} 
-        component={Profile} 
+      <Tab.Screen  
+        name="Profile"
+        component={Profile}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ color, size }) => (<Icon name="person" color={color} size={size} />)
+        }} 
       />
     </Tab.Navigator>
   );
@@ -34,12 +52,12 @@ function HomeTabNavigator({ Navigator }) { // Renamed Home to HomeTabNavigator
 export default function App() {
   return (
     <NavigationContainer>
-    <Stack.Navigator>
-    <Stack.Screen name="Login" options={{ headerShown: false }} component={Login} />
-    <Stack.Screen name="Register" options={{ headerShown: false }} component={Register} />
-    <Stack.Screen name="Forgot" options={{ headerShown: false }} component={Forgot} />
-    <Stack.Screen name="Home" options={{ headerShown: false }} component={HomeTabNavigator} />
-</Stack.Navigator>
+      <Stack.Navigator>
+        <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+        <Stack.Screen name="Register" component={Register} options={{ headerShown: false }} />
+        <Stack.Screen name="Forgot" component={Forgot} options={{ headerShown: false }} />
+        <Stack.Screen name="Home" component={HomeTabNavigator} options={{ headerShown: false }} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
